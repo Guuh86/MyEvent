@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center >Anunciar Evento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="product.name" placeholder="Nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="product.description" placeholder="Descrição"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="product.data" placeholder="Data do Evento (dd/mm/aaaa)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="product.horaInicio" placeholder="Hora de início"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="product.horaFim" placeholder="Hora de Término"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="product.telefone" placeholder="Telefone para contato"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="product.email" placeholder="E-mail para contato"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="product.imagem" placeholder="Imagem promocional (link)"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="product.localizacao" placeholder="Endereço do envento"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="saveProduct()" expand="block" color="dark">
+        <ion-icon name="share" slot="end"></ion-icon>
+      Publicar Evento
+    </ion-button>
+    <ion-button [routerLink]="['/home']" expand="block" color="dark">
+      <ion-icon name="arrow-round-back" slot="start"></ion-icon>
+    Voltar
+  </ion-button>
+  </ion-toolbar>
+</ion-footer>
