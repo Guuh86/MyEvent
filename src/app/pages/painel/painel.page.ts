@@ -6,11 +6,11 @@ import { Product } from 'src/app/interfaces/product';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-evento',
-  templateUrl: './evento.page.html',
-  styleUrls: ['./evento.page.scss'],
+  selector: 'app-painel',
+  templateUrl: './painel.page.html',
+  styleUrls: ['./painel.page.scss'],
 })
-export class EventoPage implements OnInit {
+export class PainelPage implements OnInit {
   public products = new Array<Product>();
   private productsSubscription: Subscription;
 
@@ -24,7 +24,7 @@ export class EventoPage implements OnInit {
       this.products = data;
     });
   }
-  
+
   ngOnInit() {
   }
 

@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, LoadingController, ToastController } from '@ionic/angular';
 import { User } from 'src/app/interfaces/user';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from '../../auth/auth.service';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,9 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    public keyboard: Keyboard
+    public keyboard: Keyboard,
+    public auth: AuthService, 
+    private router: Router
   ) { }
 
   ngOnInit() { }
@@ -36,6 +39,7 @@ export class LoginPage implements OnInit {
     }
   }
 
+  /*
   async login() {
     await this.presentLoading();
 
@@ -47,7 +51,7 @@ export class LoginPage implements OnInit {
       this.loading.dismiss();
     }
   }
-
+  
   async register() {
     await this.presentLoading();
 
@@ -60,6 +64,8 @@ export class LoginPage implements OnInit {
     }
   }
 
+  */
+
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
     return this.loading.present();
@@ -68,5 +74,10 @@ export class LoginPage implements OnInit {
   async presentToast(message: string) {
     const toast = await this.toastCtrl.create({ message, duration: 2000 });
     toast.present();
+  }
+
+  facebookLogin(){
+    this.auth.doFacebookLogin()
+    
   }
 }

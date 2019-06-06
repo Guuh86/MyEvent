@@ -1,9 +1,61 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>evento</ion-title>
+    <ion-title *ngFor="let product of products" text-center>MyEvent - {{product.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngFor="let product of products">
+  <ion-card>
+    <img [src]="product.imagem">
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>{{ product.name }}</ion-card-subtitle>
+      <ion-card-title>{{ product.name }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{ product.descricao }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Data e Horário</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Em{{ product.data }} das {{ product.horaInicio }} às {{ product.horaFinal }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Contato</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      Telefone: {{ product.telefone }}<br />
+      E-mail: {{ product.email }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Como chegar lá</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <div #map id="map"></div>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
+
+<ion-footer>
+  <ion-button routerLink="/home" color="success" expand="block">
+    Meus Eventos
+  </ion-button>
+</ion-footer>

@@ -1,12 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title text-center>MyEvent - Painel de Eventos</ion-title>
+    <ion-title text-center>MyEvent - Meus Eventos</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <ion-list *ngIf="!products.length">
-    <ion-item *ngFor="let item of [0, 1, 2]">
+    <ion-item *ngFor="let item of [0, 1, 2, 3, 4]">
       <ion-avatar slot="start">
         <ion-skeleton-text animated></ion-skeleton-text>
       </ion-avatar>
@@ -50,20 +50,14 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="6">
-          <ion-button (click)="logout()" color="danger" expand="block">
-            Sair
-          </ion-button>
-        </ion-col>
-
-        <ion-col size="6">
-          <ion-button routerLink="/details" expand="block">
-            Anunciar
-          </ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <ion-button routerLink="/painel" color="success" expand="block">
+      Painel Público
+    </ion-button>
+    <ion-button routerLink="/details" color="dark" expand="block">
+      Anunciar
+    </ion-button>
+    <ion-button (click)="logout()" color="danger" expand="block">
+        Sair
+    </ion-button>
   </ion-toolbar>
 </ion-footer>

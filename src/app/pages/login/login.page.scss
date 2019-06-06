@@ -4,6 +4,12 @@
     padding-top: 10%;
 }
 
+.texto{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
 ion-input, ion-item{
     border: 1px;
     border-radius: 5%;
@@ -15,6 +21,16 @@ ion-content {
 
 ion-slide{
     --overflow: hidden;
+}
+
+.black{
+    background-color: black;
+}
+
+.branco{
+    color: white;
+    font-family: Verdana;
+    font-size: 15px;
 }
 
 .geral {

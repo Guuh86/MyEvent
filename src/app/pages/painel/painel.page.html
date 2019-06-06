@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center>MyEvent - Painel de Eventos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list *ngIf="!products.length">
+        <ion-item *ngFor="let item of [0, 1, 2, 3, 4]">
+          <ion-avatar slot="start">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-avatar>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    
+      <ion-list>
+        <ion-item-sliding *ngFor="let product of products">
+          <ion-item button [routerLink]="['/evento']">
+            <ion-avatar slot="start">
+              <img [src]="product.imagem">
+            </ion-avatar>
+    
+            <ion-label>
+              {{ product.name }}
+              <p>{{ product.description }}</p>
+              <p>{{ product.localizacao }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button [routerLink]="['/home']" color="success" expand="block">
+      Meus Eventos
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

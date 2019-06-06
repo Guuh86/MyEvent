@@ -1,74 +1,35 @@
 <ion-header>
-    <p text-center>MyEvent</p>
+    <p text-center class="texto">MyEvent</p>
 </ion-header>
 
 <ion-content padding overflow-scroll="false">
-  <!-- BOTÔES SLIDE CADASTRO E LOGIN-->
-  <div class="painelBts">
-    <ion-segment (ionChange)="segmentChanged($event)" mode="ios" value="login" color="dark">
-      <ion-segment-button mode="ios" value="login">
-        <ion-label>LOGIN</ion-label>
-      </ion-segment-button>
-      <ion-segment-button mode="ios" value="register" color="dark">
-        <ion-label>CADASTRE-SE</ion-label>
-      </ion-segment-button>
-    </ion-segment>
+  <div text-center class="textoinicio">
+    <p class="texto">
+      Bem-vindo(a) ao MyEvent!<br/>
+      Para começar a usar o nosso aplicativo é<br/>
+      necessário fazer login com uma das redes sociais abaixo:
+    </p>
   </div>
-
-  <!-- SLIDE DE CADASTRO E LOGIN -->
+  
   <ion-slides>
     <ion-slide>
-      <div class="painelLogin">
-        <span>LOGIN</span>
-
-        <ion-item>
-          <ion-label position="floating">E-mail</ion-label>
-          <ion-input type="email" [(ngModel)]="userLogin.email"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="floating">Senha</ion-label>
-          <ion-input type="password" [(ngModel)]="userLogin.password"></ion-input>
-        </ion-item>
-
-        <ion-button (click)="login()" color="dark" expand="block">
-          Entrar
-        </ion-button>
-      </div>
+      <ion-item lines="none">
+        <ion-button color="dark" size="large" fill="clear" (click)="facebookLogin()"><ion-icon name="logo-facebook" style="zoom:2.5"></ion-icon></ion-button>
+      </ion-item>
     </ion-slide>
-
     <ion-slide>
-      <div class="painelRegistro">
-        <span>CADASTRO</span>
-
-        <ion-item>
-          <ion-label position="floating">Nome</ion-label>
-          <ion-input type="text"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="floating">E-mail</ion-label>
-          <ion-input type="email" [(ngModel)]="userRegister.email"></ion-input>
-        </ion-item>
-
-        <ion-item>
-          <ion-label position="floating">Senha</ion-label>
-          <ion-input type="password" [(ngModel)]="userRegister.password"></ion-input>
-        </ion-item>
-
-        <ion-button (click)="register()" expand="block" color="dark">
-          Cadastre-se
-        </ion-button>
-      </div>
+      <ion-item lines="none">
+          <ion-button color="dark" size="large" fill="clear"><ion-icon name="logo-twitter" style="zoom:2.5"></ion-icon></ion-button>
+      </ion-item>
     </ion-slide>
   </ion-slides>
-  
+
   <div class="geral">
       <div class="pessoas" [ngStyle]="{'background-position-x': wavesPosition + 'px'}"></div>
   </div>
   
 </ion-content>
 
-<ion-footer>
-  <div text-center padding>Anuncie e gerencie o seu evento!</div>
+<ion-footer >
+  <div text-center padding class="black"><p class="branco">Anuncie e gerencie o seu evento!</p></div>
 </ion-footer>
