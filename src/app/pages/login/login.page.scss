@@ -1,0 +1,38 @@
+.painelBts,
+.painelLogin,
+.painelRegistro{
+    padding-top: 10%;
+}
+
+ion-input, ion-item{
+    border: 1px;
+    border-radius: 5%;
+}
+
+ion-content {
+    --overflow: hidden;
+}
+
+ion-slide{
+    --overflow: hidden;
+}
+
+.geral {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 44%;
+    border: none;
+    .pessoas {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    height: 150%;
+    background-image: url('/assets/img/download.png');
+    background-size: contain;
+    transition: all 0.5s;
+    border: none;
+}
+}

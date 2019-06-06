@@ -36,8 +36,6 @@
           <p>{{ product.description }}</p>
           <p>{{ product.localizacao }}</p>
         </ion-label>
-
-        <ion-note color="primary" slot="end" *ngIf="product.price">{{ product.price | currency: 'BRL' }}</ion-note>
       </ion-item>
 
       <ion-item-options side="end">

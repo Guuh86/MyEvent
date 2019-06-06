@@ -2,15 +2,15 @@
     <p text-center>MyEvent</p>
 </ion-header>
 
-<ion-content class="swiper-no-swiping" padding>
+<ion-content padding overflow-scroll="false">
   <!-- BOTÔES SLIDE CADASTRO E LOGIN-->
-  <div class="container top" [hidden]="keyboard.isVisible">
-    <ion-segment (ionChange)="segmentChanged($event)" mode="ios" value="login">
+  <div class="painelBts">
+    <ion-segment (ionChange)="segmentChanged($event)" mode="ios" value="login" color="dark">
       <ion-segment-button mode="ios" value="login">
-        <ion-label>Login</ion-label>
+        <ion-label>LOGIN</ion-label>
       </ion-segment-button>
-      <ion-segment-button mode="ios" value="register">
-        <ion-label>Cadastro</ion-label>
+      <ion-segment-button mode="ios" value="register" color="dark">
+        <ion-label>CADASTRE-SE</ion-label>
       </ion-segment-button>
     </ion-segment>
   </div>
@@ -18,48 +18,57 @@
   <!-- SLIDE DE CADASTRO E LOGIN -->
   <ion-slides>
     <ion-slide>
-      <div class="slide-inner ion-padding">
-        <span>Login</span>
+      <div class="painelLogin">
+        <span>LOGIN</span>
 
-        <ion-item class="ion-margin-top" lines="none">
-          <ion-input type="email" placeholder="E-mail" [(ngModel)]="userLogin.email"></ion-input>
+        <ion-item>
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input type="email" [(ngModel)]="userLogin.email"></ion-input>
         </ion-item>
 
-        <ion-item class="ion-margin-top" lines="none">
-          <ion-input type="password" placeholder="Senha" [(ngModel)]="userLogin.password"></ion-input>
+        <ion-item>
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input type="password" [(ngModel)]="userLogin.password"></ion-input>
         </ion-item>
 
-        <ion-button class="ion-margin-top" (click)="login()" color="dark" expand="block">
+        <ion-button (click)="login()" color="dark" expand="block">
           Entrar
         </ion-button>
       </div>
     </ion-slide>
 
     <ion-slide>
-      <div class="slide-inner ion-padding">
-        <span>Cadastro</span>
+      <div class="painelRegistro">
+        <span>CADASTRO</span>
 
-        <ion-item class="ion-margin-top" lines="none">
-          <ion-input type="text" placeholder="Nome"></ion-input>
+        <ion-item>
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input type="text"></ion-input>
         </ion-item>
 
-        <ion-item class="ion-margin-top" lines="none">
-          <ion-input type="email" placeholder="E-mail" [(ngModel)]="userRegister.email"></ion-input>
+        <ion-item>
+          <ion-label position="floating">E-mail</ion-label>
+          <ion-input type="email" [(ngModel)]="userRegister.email"></ion-input>
         </ion-item>
 
-        <ion-item class="ion-margin-top" lines="none">
-          <ion-input type="password" placeholder="Senha" [(ngModel)]="userRegister.password"></ion-input>
+        <ion-item>
+          <ion-label position="floating">Senha</ion-label>
+          <ion-input type="password" [(ngModel)]="userRegister.password"></ion-input>
         </ion-item>
 
-        <ion-button class="ion-margin-top" (click)="register()" expand="block">
+        <ion-button (click)="register()" expand="block" color="dark">
           Cadastre-se
         </ion-button>
       </div>
     </ion-slide>
   </ion-slides>
-    
-  <!-- CONTAINER FINAL DE TEXTO -->
-  <div class="container bottom ion-text-center" [hidden]="keyboard.isVisible">
-    <span>Anuncie e gerencie o seu evento!</span>
+  
+  <div class="geral">
+      <div class="pessoas" [ngStyle]="{'background-position-x': wavesPosition + 'px'}"></div>
   </div>
+  
 </ion-content>
+
+<ion-footer>
+  <div text-center padding>Anuncie e gerencie o seu evento!</div>
+</ion-footer>
