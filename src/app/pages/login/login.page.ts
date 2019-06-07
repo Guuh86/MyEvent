@@ -39,12 +39,12 @@ export class LoginPage implements OnInit {
     }
   }
 
-  /*
   async login() {
     await this.presentLoading();
 
     try {
       await this.authService.login(this.userLogin);
+      this.router.navigate(['/painel']);
     } catch (error) {
       this.presentToast(error.message);
     } finally {
@@ -64,8 +64,6 @@ export class LoginPage implements OnInit {
     }
   }
 
-  */
-
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Aguarde...' });
     return this.loading.present();
@@ -77,7 +75,8 @@ export class LoginPage implements OnInit {
   }
 
   facebookLogin(){
-    this.auth.doFacebookLogin()
-    
-  }
+    this.auth.doFacebookLogin().then(() => { 
+    this.router.navigate(['painel'])
+    }
+  )}
 }

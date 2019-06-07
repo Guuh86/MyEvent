@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'details/:id', loadChildren: './pages/details/details.module#DetailsPageModule', canActivate: [AuthGuard] },
   { path: 'evento', loadChildren: './pages/evento/evento.module#EventoPageModule' },
   { path: 'painel', loadChildren: './pages/painel/painel.module#PainelPageModule' },
-  { path: 'painel/:id', loadChildren: './pages/painel/painel.module#PainelPageModule' }
+  { path: 'painel/:id', loadChildren: './pages/painel/painel.module#PainelPageModule' },  { path: 'loginmail', loadChildren: './pages/loginmail/loginmail.module#LoginmailPageModule' }
+
 
 ];
 
