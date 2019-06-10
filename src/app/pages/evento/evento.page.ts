@@ -15,10 +15,7 @@ export class EventoPage implements OnInit {
   private productsSubscription: Subscription;
 
   constructor(
-    private authService: AuthService,
-    private loadingCtrl: LoadingController,
-    private productService: ProductService,
-    private toastCtrl: ToastController
+    private productService: ProductService
   ) {
     this.productsSubscription = this.productService.getProducts().subscribe(data => {
       this.products = data;

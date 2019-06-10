@@ -27,9 +27,9 @@
   <ion-list>
     <ion-item-sliding *ngFor="let product of products">
       <ion-item button [routerLink]="['/details', product.id]">
-        <ion-avatar slot="start">
-          <img [src]="product.imagem">
-        </ion-avatar>
+          <ion-avatar slot="start">
+            <img [src]="product.imagem">
+          </ion-avatar>
 
         <ion-label>
           {{ product.name }}

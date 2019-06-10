@@ -26,7 +26,7 @@ export class LoginmailPage implements OnInit {
 
   login() {
     this.authService.login(this.userLogin);
-    this.router.navigate(['painel']);
+    this.router.navigate(['painel/:id']);
   }
   
   async register() {

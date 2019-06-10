@@ -30,6 +30,10 @@ ion-button {
     font-weight: bold;
 }
 
+#grade{
+    padding-bottom: 58%;
+}
+
 
 @media (min-width: 240px) and (max-width: 768px) {
     ion-grid {
@@ -38,4 +42,36 @@ ion-button {
     ion-col {
         border: none;
     }
+}
+
+.geral {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40%;
+    border: none;
+    .pessoas {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    right: 0;
+    height: 150%;
+    background-image: url('/assets/img/download.png');
+    background-size: contain;
+    transition: all 0.5s;
+    border: none;
+    }
+}
+
+ion-content {
+    --overflow: hidden;
+}
+
+.black{
+    background-color: black;
+}
+
+.branco{
+    color: white;
 }
