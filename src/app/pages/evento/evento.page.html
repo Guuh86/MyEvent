@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title *ngFor="let product of products" text-center>MyEvent - {{product.name}}</ion-title>
+    <ion-title text-center> MyEvent - {{product.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngFor="let product of products">
+<ion-content>
   <ion-card>
     <img [src]="product.imagem">
   </ion-card>
@@ -55,7 +55,7 @@
 </ion-content>
 
 <ion-footer>
-  <ion-button routerLink="/home" color="success" expand="block">
-    Meus Eventos
+  <ion-button routerLink="/painel" color="success" expand="block">
+    Painel de Eventos
   </ion-button>
 </ion-footer>

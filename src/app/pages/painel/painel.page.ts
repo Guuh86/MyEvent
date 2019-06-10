@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { LoadingController, ToastController } from '@ionic/angular';
+
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/interfaces/product';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-painel',
@@ -11,20 +11,20 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./painel.page.scss'],
 })
 export class PainelPage implements OnInit {
+  private productId: string = null;
+  public product: Product = {};
   public products = new Array<Product>();
   private productsSubscription: Subscription;
 
   constructor(
-    private authService: AuthService,
-    private loadingCtrl: LoadingController,
     private productService: ProductService,
-    private toastCtrl: ToastController
+    private activatedRoute: ActivatedRoute,
   ) {
     this.productsSubscription = this.productService.getProducts().subscribe(data => {
       this.products = data;
     });
   }
-
+  
   ngOnInit() {
   }
 
