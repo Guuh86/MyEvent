@@ -17,49 +17,54 @@ declare var google;
 export class LocationPage implements OnInit {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-
-  latitude: number;
-  longitude: number;
-
+  
   private productId: string = null;
   public product: Product = {};
   public products = new Array<Product>();
   private productSubscription: Subscription;
 
-  directionsService = new google.maps.DirectionsService;
-  directionsDisplay = new google.maps.DirectionsRenderer;
+  directionsService = new google.maps.DirectionsService();
+  directionsDisplay = new google.maps.DirectionsRenderer();
+
+  latitude: number;
+  longitude: number;
+  geo: any;
+
 
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private geolocation: Geolocation
-  ) { }
-
-  loadProduct() {
-    this.productSubscription = this.productService.getProduct(this.productId).subscribe(data => {
-      this.product = data;
+  ) {
+    this.productSubscription = this.productService.getProducts().subscribe(data => {
+      this.products = data;
     });
   }
 
   ngOnInit() {
-    this.initMapAndCalculateRoute();
-    
-    this.productId = this.activatedRoute.snapshot.params['id'];
+    this.initMapAndGetLocation();
 
-    if (this.productId) this.loadProduct();
   }
-
-
-  initMapAndCalculateRoute() {
-    const geo = new google.maps.LatLng( -2.947339, -41.73142 )
-    const MapOpt = {
-      center: geo,
-      zoom: 15,
-      disableDefaultUI: true
+  
+  initMapAndGetLocation() {
+    this.geolocation.getCurrentPosition()
+      .then((resp) => {
+        this.geo = new google.maps.LatLng(
+          resp.coords.latitude, 
+          resp.coords.longitude
+          );
+          console.log('A porra da localização foi obtida' + this.geo)
+        const MapOpt = {
+          center: this.geo,
+          zoom: 15,
+          disableDefaultUI: true
+        }
+        this.map = new google.maps.Map(this.mapElement.nativeElement, MapOpt);
+        this.directionsDisplay.setMap(this.map);
+      })
     }
-    this.map = new google.maps.Map(this.mapElement.nativeElement, MapOpt);
-    this.directionsDisplay.setMap(this.map);
+
+  displayRoute(){
+    
   }
 }
-
-
