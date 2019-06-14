@@ -30,6 +30,8 @@ export class LocationPage implements OnInit {
   longitude: number;
   geo: any;
 
+  location: any;
+
 
   constructor(
     private productService: ProductService,
@@ -43,19 +45,18 @@ export class LocationPage implements OnInit {
 
   ngOnInit() {
     this.initMapAndGetLocation();
-
   }
   
   initMapAndGetLocation() {
     this.geolocation.getCurrentPosition()
       .then((resp) => {
-        this.geo = new google.maps.LatLng(
+        this.location = new google.maps.LatLng(
           resp.coords.latitude, 
           resp.coords.longitude
           );
-          console.log('A porra da localização foi obtida' + this.geo)
+          console.log('Localização atual obtida com sucesso!!' + this.location);
         const MapOpt = {
-          center: this.geo,
+          center: this.location,
           zoom: 15,
           disableDefaultUI: true
         }
@@ -64,7 +65,5 @@ export class LocationPage implements OnInit {
       })
     }
 
-  displayRoute(){
-    
-  }
+  
 }

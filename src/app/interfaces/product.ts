@@ -1,7 +1,7 @@
 export interface Product {
     id?: string,
     name?: string,
-    descricao?: string,
+    desc?: string,
     data?: string;
     horaInicio?: string,
     horaFim?: string,

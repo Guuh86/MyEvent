@@ -8,18 +8,11 @@
   <ion-card>
     <img [src]="product.imagem">
   </ion-card>
-
-
   <ion-card>
     <ion-card-header>
-      <ion-card-title>{{ product.name }}</ion-card-title>
+      <ion-card-title>Descrição</ion-card-title>
     </ion-card-header>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-content>
-      {{ product.descricao }}
-    </ion-card-content>
+    <ion-card-content>{{ product.description }}</ion-card-content>
   </ion-card>
 
   <ion-card>
@@ -28,7 +21,7 @@
     </ion-card-header>
 
     <ion-card-content>
-      Em{{ product.data }} das {{ product.horaInicio }} às {{ product.horaFinal }}
+      Em{{ product.data }} das {{ product.horaInicio }} às {{ product.horaFim }}
     </ion-card-content>
   </ion-card>
 
@@ -47,12 +40,10 @@
     <ion-card-header>
       <ion-card-title>Como chegar lá?</ion-card-title>
     </ion-card-header>
-
     <ion-card-content>
-      <ion-button [routerLink]="['/location', product.id]">Ver localização do evento</ion-button>
+      <div #map style="width: 305px; height: 300px;"></div>
     </ion-card-content>
   </ion-card>
-
 </ion-content>
 
 <ion-footer>
