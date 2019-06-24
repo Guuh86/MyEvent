@@ -33,17 +33,12 @@ export class EventoPage implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private activatedRoute: ActivatedRoute,
-    private geolocation: Geolocation,
-    private platform: Platform
+    private activatedRoute: ActivatedRoute
   ) {
 
   }
 
   ngOnInit() {
-    this.platform.ready().then(() => { 
-      this.initMap();
-     });
     this.productId = this.activatedRoute.snapshot.params['id'];
 
     if (this.productId) this.loadProduct();
@@ -53,34 +48,5 @@ export class EventoPage implements OnInit {
     this.productSubscription = this.productService.getProduct(this.productId).subscribe(data => {
       this.product = data;
     });
-  }
-
-  initMap() {
-    this.geolocation.getCurrentPosition()
-      .then((resp) => {
-        this.location = new google.maps.LatLng(
-          resp.coords.latitude,
-          resp.coords.longitude
-        );
-        this.directionsService.route({
-          origin: this.location,
-          destination: 'Avenida Marquês de Paranaguá, 947, Parnaíba, PI',
-          travelMode: 'DRIVING'
-        }, (response, status) => {
-          if (status === 'OK') {
-            this.directionsDisplay.setDirections(response);
-          } else {
-            window.alert('Falha ao obter direção ' + status);
-          }
-        });
-
-        const MapOpt = {
-          center: new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude),
-          zoom: 15,
-          disableDefaultUI: true
-        }
-        this.map = new google.maps.Map(this.mapElement.nativeElement, MapOpt);
-        this.directionsDisplay.setMap(this.map);
-      })
   }
 }

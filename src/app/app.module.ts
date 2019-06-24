@@ -16,6 +16,8 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -31,6 +33,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     StatusBar,
     SplashScreen,
     Geolocation,
+    InAppBrowser,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Keyboard
   ],

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center>MyEvent - Doações</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div text-center padding>
+    Obrigado por ajudar o MyEvent a crescer!<br />
+    <p style="color:red">
+      Nota: As transações são realizadas pelo site MercadoPago
+      sendo 100% seguras!
+    </p>
+    <p>
+      Escolha abaixo o valor que deseja doar ao MyEvent:
+    </p>
+  </div>
+  <ion-list padding>
+    <ion-item button (click)="pagOne()">
+      <p>R$1,00</p>
+      <ion-note slot="end"><span class="green">DOAR ></span></ion-note>
+    </ion-item>
+    <ion-item button (click)="pagFive()">
+      <p>R$5,00</p>
+      <ion-note slot="end"><span class="green">DOAR ></span></ion-note>
+    </ion-item>
+    <ion-item button (click)="pagTen()">
+      <p>R$10,00</p>
+      <ion-note slot="end"><span class="green">DOAR ></span></ion-note>
+    </ion-item>
+    <ion-item button (click)="pagFifteen()">
+      <p>R$15,00</p>
+      <ion-note slot="end"><span class="yellow">DOAR ></span></ion-note>
+    </ion-item>
+    <ion-item button (click)="pagTwFive()">
+      <p>R$25,00</p>
+      <ion-note slot="end"><span class="yellow">DOAR ></span></ion-note>
+    </ion-item>
+    <ion-item button (click)="pagFifty()">
+      <p>R$50,00</p>
+      <ion-note slot="end"><span class="red">DOAR ></span></ion-note>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <ion-button [routerLink]="['/painel']" color="success" expand="block">
+    Painel de Eventos
+  </ion-button>
+</ion-footer>

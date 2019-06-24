@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Platform } from '@ionic/angular';
 
 declare var google;
 
@@ -36,7 +37,8 @@ export class LocationPage implements OnInit {
   constructor(
     private productService: ProductService,
     private activatedRoute: ActivatedRoute,
-    private geolocation: Geolocation
+    private geolocation: Geolocation,
+    private platform: Platform
   ) {
     this.productSubscription = this.productService.getProducts().subscribe(data => {
       this.products = data;
@@ -44,26 +46,52 @@ export class LocationPage implements OnInit {
   }
 
   ngOnInit() {
-    this.initMapAndGetLocation();
+    this.platform.ready().then(() => {
+      this.initMap();
+      this.showRoute();
+    });
+    if (this.productId) this.loadProduct();
   }
-  
-  initMapAndGetLocation() {
+
+  loadProduct() {
+    this.productSubscription = this.productService.getProduct(this.productId).subscribe(data => {
+      this.product = data;
+    });
+  }
+
+  initMap() {
     this.geolocation.getCurrentPosition()
-      .then((resp) => {
+      .then( (resp) => {
         this.location = new google.maps.LatLng(
-          resp.coords.latitude, 
+          resp.coords.latitude,
           resp.coords.longitude
-          );
-          console.log('Localização atual obtida com sucesso!!' + this.location);
+        );
         const MapOpt = {
-          center: this.location,
+          center: new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude),
           zoom: 15,
           disableDefaultUI: true
         }
         this.map = new google.maps.Map(this.mapElement.nativeElement, MapOpt);
         this.directionsDisplay.setMap(this.map);
       })
-    }
+  }
+
+  showRoute(){
+    this.directionsService.route({
+      origin: 'Avenida Marquês de Paranguá, 947, Parnaíba',
+      destination: 'Parnaíba Shopping, Parnaíba',
+      travelMode: 'DRIVING'
+    }, (response, status) => {
+      if (status === 'OK') {
+        this.directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Falha ao obter direção ' + status);
+      }
+    });
+    console.log(this.product.local);
+  }
+  
+  
 
   
 }
