@@ -8,6 +8,6 @@ export interface Product {
     telefone?: number,
     email?: string,
     imagem?: string,
-    local?: string,
+    localizacao?: string,
     userId?: string,
 }

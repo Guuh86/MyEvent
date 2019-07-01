@@ -18,7 +18,7 @@ declare var google;
 export class LocationPage implements OnInit {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  
+
   private productId: string = null;
   public product: Product = {};
   public products = new Array<Product>();
@@ -31,8 +31,6 @@ export class LocationPage implements OnInit {
   longitude: number;
   geo: any;
 
-  location: any;
-
 
   constructor(
     private productService: ProductService,
@@ -40,15 +38,15 @@ export class LocationPage implements OnInit {
     private geolocation: Geolocation,
     private platform: Platform
   ) {
-    this.productSubscription = this.productService.getProducts().subscribe(data => {
-      this.products = data;
-    });
+    this.platform.ready().then(() => {
+      
+    })
   }
 
   ngOnInit() {
-      this.initMap();
-      this.showRoute();
-      if (this.productId) this.loadProduct();    
+    this.productId = this.activatedRoute.snapshot.params['id'];
+
+    if (this.productId) this.loadProduct();
   }
 
   loadProduct() {
@@ -59,37 +57,29 @@ export class LocationPage implements OnInit {
 
   initMap() {
     this.geolocation.getCurrentPosition()
-      .then( (resp) => {
-        this.location = new google.maps.LatLng(
+      .then((resp) => {
+        const location = new google.maps.LatLng(
           resp.coords.latitude,
           resp.coords.longitude
         );
         const MapOpt = {
-          center: new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude),
+          center: location,
           zoom: 15,
           disableDefaultUI: true
         }
+        this.directionsService.route({
+          origin: location,
+          destination: this.product.local,
+          travelMode: 'WALKING'
+        }, (response, status) => {
+          if (status === 'OK') {
+            this.directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Falha ao obter direção ' + status);
+          }
+        });
         this.map = new google.maps.Map(this.mapElement.nativeElement, MapOpt);
         this.directionsDisplay.setMap(this.map);
       })
   }
-
-  showRoute(){
-    this.directionsService.route({
-      origin: 'Avenida Marquês de Paranguá, 947, Parnaíba',
-      destination: this.product.local,
-      travelMode: 'DRIVING'
-    }, (response, status) => {
-      if (status === 'OK') {
-        this.directionsDisplay.setDirections(response);
-      } else {
-        window.alert('Falha ao obter direção ' + status);
-      }
-    });
-    console.log(this.product.local);
-  }
-  
-  
-
-  
 }

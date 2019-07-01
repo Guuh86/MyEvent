@@ -36,16 +36,27 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/location" color="success" color="dark">
-      <ion-icon name="map"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  <ion-card mode="ios">
+      <ion-card-header>
+        <ion-card-title text-center>Localização do Evento</ion-card-title>
+        <p text-center>Veja como chegar no local do evento a partir da sua localização atual</p>
+      </ion-card-header>
+  
+      <ion-card-content>
+        <div #map style="width: 297px; height: 400px; border: 1px; border-style: solid; border-color: black"></div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink="/pag" color="success" color="danger">
+          <ion-icon name="card"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
 </ion-content>
 
 
 
-<ion-footer>
+<ion-footer no-border>
   <ion-button routerLink="/painel" color="success" expand="block">
     Painel de Eventos
   </ion-button>

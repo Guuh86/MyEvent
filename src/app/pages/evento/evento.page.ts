@@ -4,7 +4,6 @@ import { Product } from 'src/app/interfaces/product';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { Platform } from '@ionic/angular';
 
 declare var google: any;
 
@@ -17,6 +16,8 @@ export class EventoPage implements OnInit {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
 
+  location: any;
+
   private productId: string = null;
   public product: Product = {};
   public products = new Array<Product>();
@@ -25,15 +26,10 @@ export class EventoPage implements OnInit {
   directionsService = new google.maps.DirectionsService();
   directionsDisplay = new google.maps.DirectionsRenderer();
 
-  latitude: number;
-  longitude: number;
-  geo: any;
-
-  location: any;
-
   constructor(
     private productService: ProductService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private geolocation: Geolocation
   ) {
 
   }
@@ -47,6 +43,35 @@ export class EventoPage implements OnInit {
   loadProduct() {
     this.productSubscription = this.productService.getProduct(this.productId).subscribe(data => {
       this.product = data;
+      console.log('Produto carregado do firebase');
+      console.log('Iniciando geolocalização e directions...')
+      this.geolocation.getCurrentPosition()
+      .then((resp) => {
+        this.location = new google.maps.LatLng(
+          resp.coords.latitude,
+          resp.coords.longitude
+        );
+        this.directionsService.route({
+          origin: this.location,
+          destination: this.product.localizacao,
+          travelMode: 'DRIVING'
+        }, (response, status) => {
+          if (status === 'OK') {
+            this.directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Falha ao obter direção ' + status);
+          }
+        });
+
+        const MapOpt = {
+          center: location,
+          zoom: 15,
+          disableDefaultUI: true
+        }
+        this.map = new google.maps.Map(this.mapElement.nativeElement, MapOpt);
+        this.directionsDisplay.setMap(this.map);
+        console.log('Rota carregada com sucesso!')
+      })
     });
   }
 }

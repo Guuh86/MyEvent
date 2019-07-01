@@ -14,7 +14,9 @@ const routes: Routes = [
   { path: 'painel/:id', loadChildren: './pages/painel/painel.module#PainelPageModule' },
   { path: 'loginmail', loadChildren: './pages/loginmail/loginmail.module#LoginmailPageModule' },
   { path: 'evento/:id', loadChildren: './pages/evento/evento.module#EventoPageModule'},
-  { path: 'location', loadChildren: './pages/location/location.module#LocationPageModule'},  { path: 'pag', loadChildren: './pages/pag/pag.module#PagPageModule' }
+  { path: 'location', loadChildren: './pages/location/location.module#LocationPageModule'},
+  { path: 'location/:id', loadChildren: './pages/location/location.module#LocationPageModule'},
+  { path: 'pag', loadChildren: './pages/pag/pag.module#PagPageModule' }
 
 
 
