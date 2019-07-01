@@ -46,11 +46,9 @@ export class LocationPage implements OnInit {
   }
 
   ngOnInit() {
-    this.platform.ready().then(() => {
       this.initMap();
       this.showRoute();
-    });
-    if (this.productId) this.loadProduct();
+      if (this.productId) this.loadProduct();    
   }
 
   loadProduct() {
@@ -79,7 +77,7 @@ export class LocationPage implements OnInit {
   showRoute(){
     this.directionsService.route({
       origin: 'Avenida Marquês de Paranguá, 947, Parnaíba',
-      destination: 'Parnaíba Shopping, Parnaíba',
+      destination: this.product.local,
       travelMode: 'DRIVING'
     }, (response, status) => {
       if (status === 'OK') {

@@ -1,14 +1,11 @@
 <ion-app>
 <ion-header>
   <ion-toolbar>
-    <ion-title *ngFor="let product of products">Localização de {{ product.name }}</ion-title>
+    <ion-back-button></ion-back-button>
+    <ion-title text center>Localização de {{ product.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div #map id="mapa"></div>  
 </ion-content>
-
-<ion-footer>
-    <ion-back-button></ion-back-button>
-</ion-footer>

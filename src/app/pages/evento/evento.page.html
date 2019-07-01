@@ -8,11 +8,11 @@
   <ion-card mode="ios">
     <img [src]="product.imagem">
   </ion-card>
-  <ion-card>
+  <ion-card mode="ios">
     <ion-card-header>
       <ion-card-title text-center>Descrição</ion-card-title>
     </ion-card-header>
-    <ion-card-content mode="ios">{{ product.description }}</ion-card-content>
+    <ion-card-content>{{ product.description }}</ion-card-content>
   </ion-card>
 
   <ion-card mode="ios">
@@ -20,8 +20,8 @@
       <ion-card-title text-center>Informações de Data e Horário</ion-card-title>
     </ion-card-header>
 
-    <ion-card-content mode="ios">
-      Em{{ product.data }} das {{ product.horaInicio }} às {{ product.horaFim }}
+    <ion-card-content>
+      Em {{ product.data }} das {{ product.horaInicio }} às {{ product.horaFim }}
     </ion-card-content>
   </ion-card>
 
@@ -30,15 +30,17 @@
       <ion-card-title text-center>Informações de contato</ion-card-title>
     </ion-card-header>
 
-    <ion-card-content mode="ios">
+    <ion-card-content>
       Telefone: {{ product.telefone }}<br />
       E-mail: {{ product.email }}
     </ion-card-content>
   </ion-card>
 
-  <ion-card mode="ios">
-    <ion-card-content><ion-button [routerLink]="['/location']"></ion-button></ion-card-content>
-    </ion-card>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/location" color="success" color="dark">
+      <ion-icon name="map"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
 
 
@@ -46,8 +48,5 @@
 <ion-footer>
   <ion-button routerLink="/painel" color="success" expand="block">
     Painel de Eventos
-  </ion-button>
-  <ion-button color="medium" expand="block" routerLink="/pag">
-    Doe para o MyEvent
   </ion-button>
 </ion-footer>
