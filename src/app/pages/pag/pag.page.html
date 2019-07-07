@@ -5,43 +5,23 @@
 </ion-header>
 
 <ion-content>
-  <div text-center padding>
-    Obrigado por ajudar o MyEvent a crescer!<br />
-    <p style="color:red">
-      Nota: As transações são realizadas pelo site MercadoPago
-      sendo 100% seguras!
-    </p>
-    <p>
-      Escolha abaixo o valor que deseja doar ao MyEvent:
-    </p>
-  </div>
-  <ion-list padding>
-    <ion-item button (click)="pagOne()">
-      <p>R$1,00</p>
-      <ion-note slot="end"><span class="green">DOAR ></span></ion-note>
-    </ion-item>
-    <ion-item button (click)="pagFive()">
-      <p>R$5,00</p>
-      <ion-note slot="end"><span class="green">DOAR ></span></ion-note>
-    </ion-item>
-    <ion-item button (click)="pagTen()">
-      <p>R$10,00</p>
-      <ion-note slot="end"><span class="green">DOAR ></span></ion-note>
-    </ion-item>
-    <ion-item button (click)="pagFifteen()">
-      <p>R$15,00</p>
-      <ion-note slot="end"><span class="yellow">DOAR ></span></ion-note>
-    </ion-item>
-    <ion-item button (click)="pagTwFive()">
-      <p>R$25,00</p>
-      <ion-note slot="end"><span class="yellow">DOAR ></span></ion-note>
-    </ion-item>
-    <ion-item button (click)="pagFifty()">
-      <p>R$50,00</p>
-      <ion-note slot="end"><span class="red">DOAR ></span></ion-note>
-    </ion-item>
-  </ion-list>
+  <div *ngIf="!paidFor" id="painel" text-center padding>
+    <h3>Pague um café para o MyEvent!</h3>
 
+    <p>
+      MyEvent não têm como objetivo lucrar
+      mas se você gostou do nosso aplicativo e deseja nos ajudar
+      a melhorá-lo cada vez mais, você pode estar doando para a gente
+      é apenas uma pequena quantia! Ficaremos grato com sua ajuda! 
+    </p>
+
+    <p style="color: red">No momento aceitamos apenas pagamentos via PayPal mas em breve estaremos adicionando outros meios...</p>
+
+    <h6>{{ product.description }}</h6>
+
+  </div>
+
+  <div #paypal padding id="paypal"></div>
 </ion-content>
 
 <ion-footer no-border>

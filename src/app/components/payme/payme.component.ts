@@ -1,14 +1,13 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
-
 declare var paypal;
 
 @Component({
-  selector: 'app-pag',
-  templateUrl: './pag.page.html',
-  styleUrls: ['./pag.page.scss'],
+  selector: 'app-payme',
+  templateUrl: './payme.component.html',
+  styleUrls: ['./payme.component.scss'],
 })
-export class PagPage implements OnInit {
+export class PaymeComponent implements OnInit {
   @ViewChild('paypal') paypalElement: ElementRef;
 
   product = {
@@ -27,7 +26,7 @@ export class PagPage implements OnInit {
           purchase_units: [{
             description:this.product.description,
             amount: {
-              currency_code: 'USD',
+              currency_code: 'BRL',
               value: this.product.price 
             }
           }]
