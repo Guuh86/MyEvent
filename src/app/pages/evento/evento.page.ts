@@ -64,7 +64,7 @@ export class EventoPage implements OnInit {
         });
 
         const MapOpt = {
-          center: location,
+          center: this.location,
           zoom: 15,
           disableDefaultUI: true
         }
